@@ -182,7 +182,7 @@ namespace BarDaGalera.ConsoleApp
                             telaConta.InserirNovoRegistro();
 
                         else if (opcaoConta == "2")
-                            telaConta.ExcluirRegistro();
+                            telaConta.FecharConta();
 
                         else if (opcaoConta == "3")
                         {
