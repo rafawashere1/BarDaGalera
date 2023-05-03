@@ -39,6 +39,8 @@ namespace BarDaGalera.ConsoleApp.ModuloConta
 
         public void FecharConta()
         {
+            VisualizarRegistros(true);
+
             Conta conta = EncontrarRegistro("Digite o ID da conta que deseja fechar: ");
 
             List<Pedido> pedidos = _repositorioPedido.SelecionarTodos();

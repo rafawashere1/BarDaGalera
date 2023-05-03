@@ -198,7 +198,12 @@ namespace BarDaGalera.ConsoleApp
 
                         break;
 
-                    case "6": faturamento.VisualizarTotalDiario();
+                    case "6":
+                        Console.Clear();
+
+                        faturamento.VisualizarTotalDiario();
+
+                        Utils.VoltarAoMenu(); 
                         break;
 
                     default:
