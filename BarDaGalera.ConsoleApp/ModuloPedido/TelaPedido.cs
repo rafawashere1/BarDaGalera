@@ -34,8 +34,6 @@ namespace BarDaGalera.ConsoleApp.ModuloPedido
 
         protected override Pedido ObterRegistro()
         { 
-            _telaProduto.VisualizarRegistros(false);
-
             Produto produto = ObterProduto();
 
             if (produto == null)
@@ -81,7 +79,7 @@ namespace BarDaGalera.ConsoleApp.ModuloPedido
                 return null;
             }
 
-            _telaProduto.VisualizarRegistros(true);
+            _telaProduto.VisualizarRegistros(false);
 
             Produto produto = _telaProduto.EncontrarRegistro("Digite o id do registro: ");
 
