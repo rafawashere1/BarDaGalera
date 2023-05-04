@@ -4,26 +4,26 @@ namespace BarDaGalera.ConsoleApp.ModuloMesa
 {
     public class Mesa : EntidadeBase
     {
-        public string Bloco { get; set; }
+        public string Letra { get; set; }
 
-        public Mesa(string bloco)
+        public Mesa(string letra)
         {
-            Bloco = bloco;
+            Letra = letra;
         }
 
         public override void AtualizarInformacoes(EntidadeBase registroAtualizado)
         {
             Mesa mesaAtualizada = (Mesa)registroAtualizado;
 
-            Bloco = mesaAtualizada.Bloco;
+            Letra = mesaAtualizada.Letra;
         }
 
         public override List<string> Validar()
         {
             List<string> erros = new();
 
-            if (string.IsNullOrWhiteSpace(Bloco))
-                erros.Add("O campo \"bloco\" é obrigatório");
+            if (string.IsNullOrWhiteSpace(Letra))
+                erros.Add("\nO campo \"letra da mesa\" é obrigatório");
 
             return erros;
         }

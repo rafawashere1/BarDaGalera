@@ -2,6 +2,6 @@
 {
     public enum TipoMensagem
     {
-        READKEY, NOREADKEY
+        READKEY, NOREADKEY, ABERTO, FECHADO
     }
 }

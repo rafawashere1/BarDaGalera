@@ -6,9 +6,11 @@ namespace BarDaGalera.ConsoleApp.ModuloPedido
     public class TelaPedido : TelaBase<Pedido>
     {
         private readonly TelaProduto _telaProduto;
+        private readonly RepositorioProduto _repositorioProduto;
 
-        public TelaPedido(RepositorioBase<Pedido> repositorioPedido, TelaProduto telaProduto) : base(repositorioPedido)
+        public TelaPedido(RepositorioBase<Pedido> repositorioPedido, RepositorioProduto repositorioProduto, TelaProduto telaProduto) : base(repositorioPedido)
         {
+            _repositorioProduto = repositorioProduto;
             _telaProduto = telaProduto;
             nomeEntidade = "Pedido";
             sufixo = "s";
@@ -31,12 +33,13 @@ namespace BarDaGalera.ConsoleApp.ModuloPedido
         }
 
         protected override Pedido ObterRegistro()
-        {
-            VisualizarRegistros(false);
+        { 
+            _telaProduto.VisualizarRegistros(false);
 
             Produto produto = ObterProduto();
 
-            Console.WriteLine("Quantos produtos deseja adicionar?");
+            if (produto == null)
+                return null;
 
             int quantidade = 0;
             bool quantidadeInvalida;
@@ -45,19 +48,21 @@ namespace BarDaGalera.ConsoleApp.ModuloPedido
             {
                 quantidadeInvalida = false;
 
+                Console.WriteLine("Quantos produtos deseja adicionar?");
+
                 try
                 {
                     quantidade = Convert.ToInt32(Console.ReadLine());
                 }
                 catch (FormatException)
                 {
+                    Utils.MostrarMensagem("Formato da quantidade está inválido", ConsoleColor.Red, TipoMensagem.READKEY);
                     quantidadeInvalida = true;
-                    Utils.MostrarMensagem("Formato da quantidade está inválido", ConsoleColor.DarkYellow, TipoMensagem.READKEY);
                 }
-                catch (ArgumentNullException)
+                catch (OverflowException)
                 {
+                    Utils.MostrarMensagem("A Quantidade informada excedeu o limite permitido.", ConsoleColor.Red, TipoMensagem.READKEY);
                     quantidadeInvalida = true;
-                    Utils.MostrarMensagem("Informe uma quantidade.", ConsoleColor.DarkYellow, TipoMensagem.READKEY);
                 }
 
             } while (quantidadeInvalida);
@@ -69,6 +74,13 @@ namespace BarDaGalera.ConsoleApp.ModuloPedido
 
         private Produto ObterProduto()
         {
+            List<Produto> produtos = _repositorioProduto.SelecionarTodosProdutos();
+            if (!_repositorioProduto.TemRegistro(produtos))
+            {
+                Utils.MostrarMensagem("É necessário ter um produto cadastrado.", ConsoleColor.Red, TipoMensagem.READKEY);
+                return null;
+            }
+
             _telaProduto.VisualizarRegistros(true);
 
             Produto produto = _telaProduto.EncontrarRegistro("Digite o id do registro: ");

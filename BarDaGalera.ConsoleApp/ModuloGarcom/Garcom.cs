@@ -26,10 +26,10 @@ namespace BarDaGalera.ConsoleApp.ModuloGarcom
             List<string> erros = new();
 
             if (string.IsNullOrWhiteSpace(Nome))
-                erros.Add("O campo \"nome\" é obrigatório");
+                erros.Add("\nO campo \"nome\" é obrigatório");
 
             if (string.IsNullOrWhiteSpace(Cpf))
-                erros.Add("O campo \"cpf\" é obrigatório");
+                erros.Add("\nO campo \"cpf\" é obrigatório");
 
             return erros;
         }

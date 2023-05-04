@@ -52,5 +52,10 @@
         {
             return _listaRegistros.Count > 0;
         }
+
+        public bool TemRegistro(List<T> listaRegistros)
+        {
+            return listaRegistros.Count > 0;
+        }
     }
 }

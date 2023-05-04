@@ -28,10 +28,10 @@ namespace BarDaGalera.ConsoleApp.ModuloGarcom
 
         protected override Garcom ObterRegistro()
         {
-            Console.Write("Digite o nome: ");
+            Console.Write("\nDigite o nome: ");
             string nome = Console.ReadLine();
 
-            Console.Write("Digite o número do CPF: ");
+            Console.Write("\nDigite o número do CPF: ");
             string cpf = Console.ReadLine();
 
             return new Garcom(nome, cpf);

@@ -29,6 +29,7 @@ namespace BarDaGalera.ConsoleApp.ModuloConta
             Console.WriteLine($"[2] Fechar {nomeEntidade}{sufixo}");
             Console.WriteLine($"[3] Visualizar {nomeEntidade}{sufixo}");
 
+            Console.WriteLine();
             Console.WriteLine("[S] Voltar ao menu principal");
 
             Console.WriteLine();
@@ -71,7 +72,7 @@ namespace BarDaGalera.ConsoleApp.ModuloConta
 
             foreach (Conta conta in registros)
             {
-                Console.WriteLine("{0, -10} | {1, -20} | {2, -20} | {3, -20} | {4, -20}", conta.Id, conta.Pedidos.Count, conta.Mesa.Id, conta.Data, conta.EmAberto ? "Aberto" : "Fechado");
+                Console.WriteLine("{0, -10} | {1, -20} | {2, -20} | {3, -20} | {4, -20}", conta.Id, conta.Pedidos.Count, conta.Mesa.Id, conta.Data.ToString("dd/MM/yyyy"), conta.EmAberto ? TipoMensagem.ABERTO : TipoMensagem.FECHADO);
             }
         }
 
@@ -81,7 +82,7 @@ namespace BarDaGalera.ConsoleApp.ModuloConta
 
             Mesa mesa = ObterMesa();
 
-            DateTime data = DateTime.Now.Date;
+            DateTime data = DateTime.Now;
 
             bool emAberto = true;
 

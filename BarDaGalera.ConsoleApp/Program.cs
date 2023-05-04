@@ -22,7 +22,7 @@ namespace BarDaGalera.ConsoleApp
             TelaGarcom telaGarcom = new(repositorioGarcom);
             TelaMesa telaMesa = new(repositorioMesa);
             TelaProduto telaProduto = new(repositorioProduto);
-            TelaPedido telaPedido = new(repositorioPedido, telaProduto);
+            TelaPedido telaPedido = new(repositorioPedido, repositorioProduto, telaProduto);
             TelaConta telaConta = new(repositorioConta, repositorioPedido, telaMesa, faturamento);
 
             while (true)

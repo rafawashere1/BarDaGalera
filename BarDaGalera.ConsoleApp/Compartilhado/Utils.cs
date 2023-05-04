@@ -9,6 +9,13 @@
             Console.ReadKey();
         }
 
+        public static void TentarNovamente()
+        {
+            Console.WriteLine();
+            Console.WriteLine("Pressione Enter para tentar novamente");
+            Console.ReadKey();
+        }
+
         public static void MostrarMensagem(string mensagem, ConsoleColor cor, TipoMensagem tipoMensagem)
         {
             switch (tipoMensagem)
@@ -28,6 +35,18 @@
                     Console.ForegroundColor = cor;
                     Console.WriteLine(mensagem);
                     Console.ResetColor();
+
+                    break;
+
+                case TipoMensagem.ABERTO:
+
+                    Console.WriteLine("Aberto");
+
+                    break;
+
+                case TipoMensagem.FECHADO:
+
+                    Console.WriteLine("Fechado");
 
                     break;
             }

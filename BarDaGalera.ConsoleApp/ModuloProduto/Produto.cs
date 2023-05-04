@@ -26,10 +26,10 @@ namespace BarDaGalera.ConsoleApp.ModuloProduto
             List<string> erros = new();
 
             if (string.IsNullOrWhiteSpace(Nome))
-                erros.Add("O campo \"nome\" é obrigatório");
+                erros.Add("\nO campo \"nome\" é obrigatório");
 
             if (Preco < 0)
-                erros.Add("O campo \"preço\" não pode ser menor que 0");
+                erros.Add("\nO campo \"preço\" não pode ser menor que 0");
 
             return erros;
         }

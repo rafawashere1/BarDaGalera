@@ -28,32 +28,31 @@ namespace BarDaGalera.ConsoleApp.ModuloProduto
 
         protected override Produto ObterRegistro()
         {
-            Console.Write("Digite o nome: ");
+            Console.Write("\nDigite o nome: ");
             string nome = Console.ReadLine();
-
-            Console.Write("Digite o preco: ");
 
             bool precoInvalido;
             decimal preco = 0;
 
             do
             {
-                
                 precoInvalido = false;
+
+                Console.Write("\nDigite o preco: ");
 
                 try
                 {
                     preco = Convert.ToDecimal(Console.ReadLine());
                 }
                 catch (FormatException)
-                {
+                {                   
+                    Utils.MostrarMensagem("Formato do preço está inválido.", ConsoleColor.Red, TipoMensagem.NOREADKEY);
                     precoInvalido = true;
-                    Utils.MostrarMensagem("Formato do preço está inválido.", ConsoleColor.DarkYellow, TipoMensagem.READKEY);
                 }
-                catch (ArgumentNullException)
+                catch (OverflowException)
                 {
+                    Utils.MostrarMensagem("O preço informado excedeu o limite permitido.", ConsoleColor.Red, TipoMensagem.NOREADKEY);
                     precoInvalido = true;
-                    Utils.MostrarMensagem("Informe um preço", ConsoleColor.DarkYellow, TipoMensagem.READKEY);
                 }
 
             } while (precoInvalido);

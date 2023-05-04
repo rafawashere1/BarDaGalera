@@ -13,7 +13,7 @@ namespace BarDaGalera.ConsoleApp.ModuloMesa
         {
             Console.ForegroundColor = ConsoleColor.Red;
 
-            Console.WriteLine("{0, -10} | {1, -20}", "Id", "Bloco");
+            Console.WriteLine("{0, -10} | {1, -20}", "Id", "Letra da mesa");
 
             Console.WriteLine("--------------------------------------------------------------------");
 
@@ -21,16 +21,16 @@ namespace BarDaGalera.ConsoleApp.ModuloMesa
 
             foreach (Mesa mesa in registros)
             {
-                Console.WriteLine("{0, -10} | {1, -20}", mesa.Id, mesa.Bloco);
+                Console.WriteLine("{0, -10} | {1, -20}", mesa.Id, mesa.Letra);
             }
         }
 
         protected override Mesa ObterRegistro()
         {
-            Console.Write("Digite o bloco: ");
-            string bloco = Console.ReadLine();
+            Console.Write("\nDigite a letra da mesa: ");
+            string letraMesa = Console.ReadLine();
 
-            return new Mesa(bloco);
+            return new Mesa(letraMesa);
         }
     }
 }
