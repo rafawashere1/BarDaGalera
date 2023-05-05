@@ -1,6 +1,6 @@
 ﻿namespace BarDaGalera.ConsoleApp.Compartilhado
 {
-    public abstract class TelaBase<T> where T : EntidadeBase
+    public abstract class TelaBase<T> : ITelaCadastravel where T : EntidadeBase
     {
         public string nomeEntidade;
         public string sufixo;

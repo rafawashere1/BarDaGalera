@@ -1,4 +1,4 @@
-﻿namespace BarDaGalera.ConsoleApp.Compartilhado
+﻿namespace BarDaGalera.ConsoleApp.ModuloFaturamento
 {
     public class Faturamento
     {
@@ -7,11 +7,6 @@
         public void IncrementarFaturamento(decimal valor)
         {
             TotalFaturado += valor;
-        }
-
-        public void VisualizarTotalDiario()
-        {
-            Console.WriteLine($"O total faturado foi: R$ {TotalFaturado}");
         }
     }
 }

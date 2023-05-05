@@ -1,4 +1,5 @@
 ﻿using BarDaGalera.ConsoleApp.Compartilhado;
+using BarDaGalera.ConsoleApp.ModuloFaturamento;
 using BarDaGalera.ConsoleApp.ModuloMesa;
 using BarDaGalera.ConsoleApp.ModuloPedido;
 
@@ -28,6 +29,7 @@ namespace BarDaGalera.ConsoleApp.ModuloConta
             Console.WriteLine($"[1] Adicionar {nomeEntidade}");
             Console.WriteLine($"[2] Fechar {nomeEntidade}{sufixo}");
             Console.WriteLine($"[3] Visualizar {nomeEntidade}{sufixo}");
+            Console.WriteLine($"[4] Visualizar Total Diário");
 
             Console.WriteLine();
             Console.WriteLine("[S] Voltar ao menu principal");
@@ -64,16 +66,20 @@ namespace BarDaGalera.ConsoleApp.ModuloConta
         {
             Console.ForegroundColor = ConsoleColor.Red;
 
-            Console.WriteLine("{0, -10} | {1, -20} | {2, -20} | {3, -20} | {4, -20}", "Id", "Quantidade de Pedidos", "Id da mesa", "Data", "Status");
+            Console.WriteLine("{0, -10} | {1, -20} | {2, -22} | {3, -20} | {4, -20}", "Id", "Quantidade de Pedidos", "Id da mesa", "Data", "Status");
 
-            Console.WriteLine("--------------------------------------------------------------------");
+            Console.WriteLine("---------------------------------------------------------------------------------------");
 
             Console.ResetColor();
 
             foreach (Conta conta in registros)
             {
-                Console.WriteLine("{0, -10} | {1, -20} | {2, -20} | {3, -20} | {4, -20}", conta.Id, conta.Pedidos.Count, conta.Mesa.Id, conta.Data.ToString("dd/MM/yyyy"), conta.EmAberto ? TipoMensagem.ABERTO : TipoMensagem.FECHADO);
+                Console.WriteLine("{0, -10} | {1, -20} | {2, -22} | {3, -20} | {4, -20}", conta.Id, conta.Pedidos.Count, conta.Mesa.Id, conta.Data.ToString("dd/MM/yyyy"), conta.EmAberto ? TipoMensagem.ABERTO : TipoMensagem.FECHADO);
             }
+        }
+        public void VisualizarFaturamentoDoDia()
+        {
+            Console.WriteLine($"O total faturado foi: R$ {_faturamento.TotalFaturado}");
         }
 
         protected override Conta ObterRegistro()
